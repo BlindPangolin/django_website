@@ -3061,7 +3061,7 @@ input, select, textarea {
 				top: 0;
 				width: 100%;
 				z-index: 10001;
-				background: #222;
+				background-color: var(--color2);
 				color: var(--color6);
 				min-width: 320px;
 			}
