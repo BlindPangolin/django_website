@@ -1,4 +1,4 @@
-
+@import url("fontawesome-all.min.css");
 /*
 	Read Only by HTML5 UP
 	html5up.net | @ajlkn
@@ -2812,7 +2812,6 @@ input, select, textarea {
 			}
 
 				#header > nav ul li {
-					/*border-top: solid 2px #5ccfb1;*/
 					display: block;
 					padding: 0;
 				}
@@ -3112,6 +3111,7 @@ input, select, textarea {
 					#titleBar .toggle:before {
 						background: var(--color5);
 						color: var(--color2);
+						font-family: 'Font Awesome 5 Free';
 						content: '\f0c9';
 						display: block;
 						font-size: 18px;
