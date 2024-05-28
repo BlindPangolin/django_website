@@ -6,7 +6,7 @@ from .models import Image
 
 def index(request):
     recent_images = Image.objects.order_by("-id")[:20]
-    if len(recent_images) > 0:
+    if len(recent_images) >= 20:
         last_id = min([o.id for o in recent_images])
     else:
         last_id = -1
