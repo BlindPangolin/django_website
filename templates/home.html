@@ -1,0 +1,22 @@
+{% extends "base_site.html" %}
+{% load static %}
+
+{% block home_button_class %}active{% endblock home_button_class %}
+
+{% block content %}
+
+    <section id="one">
+        <div class="image main" data-position="center">
+            <img src="{% static 'base_site/images/banner.png' %}" alt="" />
+        </div>
+        <div class="container">
+            <header class="major">
+                <h2>Welcome</h2>
+                <p>
+                    Just my simple website<br />
+                </p>
+            </header>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base_site.html" %}
+{% load static %}
+
+
+{% block spirograph_button_class %}active{% endblock spirograph_button_class %}
+
+
+
+{% block content %}
+    <section>
+        <div class="image main" data-position="center">
+            <img src="{% static 'base_site/images/banner.png' %}" alt="" />
+        </div>
+        <div class="container">
+            <header class="major">
+                <h2>Spirograph</h2>
+                <p>Just some spirograph-like things I did in Python</p>
+            </header>
+        </div>
+    </section>
+
+    <link rel="stylesheet" href="{% static 'gallery/assets/css/gallery_main.css' %}" />
+    <noscript><link rel="stylesheet" href="{% static 'gallery/assets/css/noscript.css' %}" /></noscript>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'gallery/assets/css/lightgallery.css' %}" />
+    <script src="{% static 'gallery/assets/js/lightgallery.umd.js' %}"></script>
+
+    <div id="gallery_wrapper">
+            <div id="gallery_main" data-last_id="{{last_id}}">
+                {% for image in recent_images %}
+
+                <a class="gallery_thumb" href="{{image.image_original.url}}" data-sub-html="<h2>{{ image.title }}</h2><p>{{ image.description }}</p>">
+                    <img src="{{image.image_thumbnail.url}}" class="gallery_image"/>
+                </a>
+                {% endfor %}
+
+            </div>
+    </div>
+
+    <script src="{% static 'gallery/assets/js/main.js' %}"></script>
+
+    <section id="load_more_section" class="two">
+        <div class="gallery_container">
+            <button id="button_load_more" onclick="click_load_more()"> Load more </button>
+        </div>
+    </section>
+{% endblock %}
