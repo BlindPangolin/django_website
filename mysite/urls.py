@@ -19,8 +19,8 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-# from django_otp.admin import OTPAdminSite
-# admin.site.__class__ = OTPAdminSite
+from django_otp.admin import OTPAdminSite
+admin.site.__class__ = OTPAdminSite
 
 from . import settings
 from . import views
