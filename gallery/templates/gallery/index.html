@@ -29,7 +29,7 @@
             <div id="gallery_main" data-last_id="{{last_id}}">
                 {% for image in recent_images %}
 
-                <a class="gallery_thumb" href="{{image.image_original.url}}" data-sub-html="<h2>{{ image.title }}</h2><p>{{ image.description }}</p>">
+                <a class="gallery_thumb" href="{{image.image_original.url}}" data-sub-html="<h2>{{ image.title }}</h2><p>{{ image.description }}</p><div class='licence'>{{ image.licence.html }}</div>">
                     <img src="{{image.image_thumbnail.url}}" class="gallery_image"/>
                 </a>
                 {% endfor %}

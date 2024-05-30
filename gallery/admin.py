@@ -1,7 +1,16 @@
 from django.contrib import admin
 from django.utils import timezone
 
-from .models import Image, ImageGroup
+from .models import Image, ImageGroup, LicenceType
+
+
+class LicenceTypeAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {"fields": ["name"]}),
+        ("Embeded HTML", {"fields": ["html"]}),
+    ]
+    list_display = ["id", "name"]
+    search_fields = ["name"]
 
 
 class ImageGroupAdmin(admin.ModelAdmin):
@@ -22,10 +31,11 @@ class ImageAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {"fields": ["title", "description"]}),
         ("Image group", {"fields": ["group"]}),
+        ("Licence", {"fields": ["licence"]}),
         ("Images", {"fields": ["image_original", "image_thumbnail"]}),
         ("Date information", {"fields": ["publication_date"]}),
     ]
-    list_display = ["id", "title", "description", "publication_date", "was_published_recently"]
+    list_display = ["id", "title", "licence", "publication_date"]
     search_fields = ["title"]
 
     def get_form(self, request, obj=None, **kwargs):
@@ -34,5 +44,6 @@ class ImageAdmin(admin.ModelAdmin):
         return form
 
 
+admin.site.register(LicenceType, LicenceTypeAdmin)
 admin.site.register(ImageGroup, ImageGroupAdmin)
 admin.site.register(Image, ImageAdmin)

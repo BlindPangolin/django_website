@@ -31,6 +31,7 @@ def load_more(request):
         {
             'title': o.title,
             'description': o.description,
+            'licence': o.licence.html,
             'image_original_url': o.image_original.url,
             'image_thumbnail_url': o.image_thumbnail.url,
         }

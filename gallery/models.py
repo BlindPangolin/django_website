@@ -10,6 +10,14 @@ from .utils import make_thumbnail
 from mysite.settings import MEDIA_ROOT  # probably not the right way to do it
 
 
+class LicenceType(models.Model):
+    name = models.CharField(max_length=255)
+    html = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return self.name
+
+
 class ImageGroup(models.Model):
     name = models.CharField(max_length=255)
     publication_date = models.DateTimeField("date published")
@@ -43,6 +51,7 @@ class Image(models.Model):
     image_original = models.ImageField(default='', upload_to=original_directory_path)
     image_thumbnail = models.ImageField(default='', upload_to=thumbnail_directory_path, blank=True)
     publication_date = models.DateTimeField("date published", default=timezone.datetime(1990, 1, 1))
+    licence = models.ForeignKey(LicenceType, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.title
