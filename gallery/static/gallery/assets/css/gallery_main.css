@@ -90,6 +90,19 @@ header_gallery {
 	display: block;
 }
 
+#licence_notice {
+    font-size: 10pt;
+    color: var(--color4);
+}
+#licence_notice a:hover {
+    color: var(--color5);
+}
+#licence_notice img {
+    height: 16px !important;
+    filter: brightness(80%);
+    vertical-align: text-bottom;
+}
+
     .gallery_section {
         background-color: var(--color3);
     }
