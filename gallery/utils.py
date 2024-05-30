@@ -1,6 +1,7 @@
 from io import BytesIO
 from django.core.files import File
 from PIL import Image
+import subprocess
 
 
 def make_thumbnail(image):
@@ -23,3 +24,7 @@ def make_thumbnail(image):
     thumbnail = File(thumb_io, name=image.name.replace('/original/', '/thumbnail/'))
 
     return thumbnail
+
+
+def attach_xmp(image_path, xmp_path):
+    subprocess.run(['exiftool', '-v', '-tagsfromfile', f"{xmp_path}", '-all:all', f"{image_path}", '-overwrite_original'])

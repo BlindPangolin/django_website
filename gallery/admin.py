@@ -8,6 +8,7 @@ class LicenceTypeAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {"fields": ["name"]}),
         ("Embeded HTML", {"fields": ["html"]}),
+        ("XMP File", {"fields": ["xmp_file"]}),
     ]
     list_display = ["id", "name"]
     search_fields = ["name"]

@@ -6,13 +6,13 @@ from django.db import models
 from django.utils import timezone
 from django.contrib import admin
 
-from .utils import make_thumbnail
-from mysite.settings import MEDIA_ROOT  # probably not the right way to do it
+from .utils import make_thumbnail, attach_xmp
 
 
 class LicenceType(models.Model):
     name = models.CharField(max_length=255)
     html = models.CharField(max_length=2000)
+    xmp_file = models.FileField(default='', upload_to='licences/')
 
     def __str__(self):
         return self.name
@@ -40,7 +40,6 @@ def original_directory_path(instance, filename):
 
 
 def thumbnail_directory_path(instance, filename):
-    print('thumbnail_directory_path')
     return f"images/thumbnail/{instance.group.id}/{uuid.uuid4()}{os.path.splitext(filename)[1]}"
 
 
@@ -75,7 +74,11 @@ class Image(models.Model):
             super().save(*args, update_fields=['image_thumbnail'], **kwargs)
 
         # edit thumbnail naming and rename file
-        os.rename(os.path.join(MEDIA_ROOT, self.image_thumbnail.name),
-                  os.path.join(MEDIA_ROOT, self.image_original.name).replace('/original/', '/thumbnail/'))
+        os.rename(self.image_thumbnail.file.name,
+                  self.image_original.file.name.replace('/original/', '/thumbnail/'))
         self.image_thumbnail.name = self.image_original.name.replace('/original/', '/thumbnail/')
         super().save(*args, update_fields=['image_thumbnail'], **kwargs)
+
+        if len(self.licence.xmp_file.name) > 0:
+            attach_xmp(self.image_original.file.name, self.licence.xmp_file.file.name)
+            attach_xmp(self.image_original.file.name.replace('/original/', '/thumbnail/'), self.licence.xmp_file.file.name)
