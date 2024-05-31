@@ -2751,7 +2751,7 @@ input, select, textarea {
 		}
 
 			#header a:hover {
-				color: var(--color4) !important;
+				color: var(--color4);
 			}
 
 		#header > header {
@@ -2795,7 +2795,10 @@ input, select, textarea {
 			}
 
 				#header > footer .icons li a {
-					color: #b7eadc;
+					color: var(--color4);
+				}
+				#header > footer .icons li a:hover {
+					color: var(--color5);
 				}
 
 		#header > nav {
@@ -2832,6 +2835,10 @@ input, select, textarea {
 						#header > nav ul li a.active {
 							background: var(--color5);
 							color: var(--color1); !important;
+						}
+						#header > nav ul li a.active:hover {
+							background: var(--color5);
+							color: var(--color4) !important;
 						}
 
 					#header > nav ul li:first-child {
