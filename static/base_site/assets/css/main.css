@@ -2906,6 +2906,24 @@ input, select, textarea {
 					color: inherit;
 				}
 
+
+
+    .licence_notice {
+        font-size: 10pt;
+        color: var(--color4);
+        margin: 0 0 3.25em 0;
+    }
+    .licence_notice a:hover {
+        color: var(--color5);
+    }
+    .licence_notice img {
+        height: 14px !important;
+        filter: brightness(70%);
+        vertical-align: text-bottom;
+        margin-left: 3px !important;
+        margin-bottom: 2px;
+    }
+
 /* XLarge */
 
 	@media screen and (max-width: 1680px) {
