@@ -54,4 +54,4 @@ function click_load_more() {
 }
 
 let gallery_main = document.getElementById('gallery_main');
-const gallery = lightGallery(gallery_main);
+const gallery = lightGallery(gallery_main, {licenseKey: "D662B81C-D2E247E5-9EC0F4D2-F4B39655", plugins: [lgHash]});
