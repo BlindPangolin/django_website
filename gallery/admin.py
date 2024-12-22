@@ -3,6 +3,13 @@ from django.utils import timezone
 
 from .models import Image, ImageGroup, LicenceType
 
+# import to add AVIF support on admin page
+# https://stackoverflow.com/questions/67898407/django-admin-add-support-for-heic-for-imagefield
+try:
+    import pillow_avif
+except:
+    pass
+
 
 class LicenceTypeAdmin(admin.ModelAdmin):
     fieldsets = [
